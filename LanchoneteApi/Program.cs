@@ -1,4 +1,3 @@
-using LanchoneteApi.Models.Interface;
 using LanchoneteApi.Models.Mappings;
 using LanchoneteApi.Services;
 
@@ -12,6 +11,8 @@ builder.Services.AddOpenApi();
 
 // Services
 builder.Services.AddScoped<PedidoService, PedidoService>();
+builder.Services.AddScoped<ProcessamentoPedidoService, ProcessamentoPedidoService>();
+builder.Services.AddScoped<ConsumoPedidoService, ConsumoPedidoService>();
 
 // Cache 
 builder.Services.AddMemoryCache();

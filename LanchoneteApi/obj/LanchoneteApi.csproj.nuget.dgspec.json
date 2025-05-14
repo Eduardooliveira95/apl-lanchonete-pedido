@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projetos\\BTG\\projeto\\apl-lanchonete-pedido\\LanchoneteApi\\LanchoneteApi.csproj": {}
+    "C:\\Projetos\\BTG\\projeto\\lanchonete\\apl-lanchonete-pedido\\LanchoneteApi\\LanchoneteApi.csproj": {}
   },
   "projects": {
-    "C:\\Projetos\\BTG\\projeto\\apl-lanchonete-pedido\\LanchoneteApi\\LanchoneteApi.csproj": {
+    "C:\\Projetos\\BTG\\projeto\\lanchonete\\apl-lanchonete-pedido\\LanchoneteApi\\LanchoneteApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projetos\\BTG\\projeto\\apl-lanchonete-pedido\\LanchoneteApi\\LanchoneteApi.csproj",
+        "projectUniqueName": "C:\\Projetos\\BTG\\projeto\\lanchonete\\apl-lanchonete-pedido\\LanchoneteApi\\LanchoneteApi.csproj",
         "projectName": "LanchoneteApi",
-        "projectPath": "C:\\Projetos\\BTG\\projeto\\apl-lanchonete-pedido\\LanchoneteApi\\LanchoneteApi.csproj",
+        "projectPath": "C:\\Projetos\\BTG\\projeto\\lanchonete\\apl-lanchonete-pedido\\LanchoneteApi\\LanchoneteApi.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Projetos\\BTG\\projeto\\apl-lanchonete-pedido\\LanchoneteApi\\obj\\",
+        "outputPath": "C:\\Projetos\\BTG\\projeto\\lanchonete\\apl-lanchonete-pedido\\LanchoneteApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -57,6 +57,10 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[12.0.0, )"
+            },
+            "Confluent.Kafka": {
+              "target": "Package",
+              "version": "[2.10.0, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",

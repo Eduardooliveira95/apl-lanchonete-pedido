@@ -11,22 +11,31 @@ namespace LanchoneteApi.Controllers
     public class PedidoController : ControllerBase
     {
         private PedidoService _pedidoService;
+        private ConsumoPedidoService _consumoPedidoService;
 
-        public PedidoController(PedidoService pedidoService)
+        public PedidoController(PedidoService pedidoService, ConsumoPedidoService consumoPedidoService)
         {
-            this._pedidoService = pedidoService;
+            _pedidoService = pedidoService;
+            _consumoPedidoService = consumoPedidoService;
         }
 
         [HttpGet("/{idPedido}")]
         public async Task<PedidoResponse> ConsultaPedidos(int idPedido)
         {
-            return _pedidoService.ConsultaPedido(idPedido);
+            return await _pedidoService.ConsultaPedido(idPedido);
         }
 
         [HttpPost]
-        public async Task<Pedido> AdicionarPedido(PedidoRequest pedido)
+        public async Task<ActionResult<Pedido>> AdicionarPedido(PedidoRequest pedido)
         {
-            return _pedidoService.SalvarPedido(pedido);
+            var NovoPedido = await _pedidoService.SalvarPedido(pedido);
+
+            if (NovoPedido.IdPedido == 5) 
+            {
+                await _consumoPedidoService.ConsumirPedido();
+            }
+
+            return NovoPedido;
         }
     }
 }
