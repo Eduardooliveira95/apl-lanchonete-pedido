@@ -1,5 +1,6 @@
-using LanchoneteApi.Models.Mappings;
-using LanchoneteApi.Services;
+using LanchoneteApi.Pedidos.Application;
+using LanchoneteApi.Pedidos.Application.Mappings;
+using LanchoneteApi.Pedidos.Infrastructure.Messaging;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,4 +1,4 @@
-﻿namespace LanchoneteApi.Interfaces
+﻿namespace LanchoneteApi.Pedidos.Application.Interfaces
 {
     public interface IConsumoPedidoService
     {

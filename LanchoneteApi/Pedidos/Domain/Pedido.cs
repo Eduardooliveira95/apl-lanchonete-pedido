@@ -1,7 +1,7 @@
-﻿using LanchoneteApi.Models.Request;
+﻿using LanchoneteApi.Pedidos.Presentation.Request;
 using System.ComponentModel.DataAnnotations;
 
-namespace LanchoneteApi.Models
+namespace LanchoneteApi.Pedidos.Domain
 {
     public class Pedido
     {

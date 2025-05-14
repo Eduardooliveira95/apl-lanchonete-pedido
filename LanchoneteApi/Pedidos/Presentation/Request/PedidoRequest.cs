@@ -1,4 +1,4 @@
-﻿namespace LanchoneteApi.Models.Request
+﻿namespace LanchoneteApi.Pedidos.Presentation.Request
 {
     public class PedidoRequest
     {

@@ -1,13 +1,15 @@
-﻿using LanchoneteApi.Models;
-using LanchoneteApi.Models.Request;
-using LanchoneteApi.Models.Response;
-using LanchoneteApi.Services;
+﻿using LanchoneteApi.Pedidos.Application;
+using LanchoneteApi.Pedidos.Domain;
+using LanchoneteApi.Pedidos.Infrastructure.Messaging;
+using LanchoneteApi.Pedidos.Presentation.Request;
+using LanchoneteApi.Pedidos.Presentation.Response;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LanchoneteApi.Controllers
+namespace LanchoneteApi.Pedidos.Presentation.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class PedidoController : ControllerBase
     {
         private PedidoService _pedidoService;
@@ -20,21 +22,19 @@ namespace LanchoneteApi.Controllers
         }
 
         [HttpGet("/{idPedido}")]
-        public async Task<PedidoResponse> ConsultaPedidos(int idPedido)
+        public async Task<ActionResult<PedidoResponse>> ConsultaPedidos(int idPedido)
         {
-            return await _pedidoService.ConsultaPedido(idPedido);
+            var busca = await _pedidoService.ConsultaPedido(idPedido);
+
+            if (busca is null) return NoContent();
+
+            return busca;
         }
 
         [HttpPost]
         public async Task<ActionResult<Pedido>> AdicionarPedido(PedidoRequest pedido)
         {
             var NovoPedido = await _pedidoService.SalvarPedido(pedido);
-
-            if (NovoPedido.IdPedido == 5) 
-            {
-                await _consumoPedidoService.ConsumirPedido();
-            }
-
             return NovoPedido;
         }
     }

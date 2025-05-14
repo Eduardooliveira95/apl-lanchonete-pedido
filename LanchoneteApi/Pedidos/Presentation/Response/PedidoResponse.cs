@@ -1,4 +1,4 @@
-﻿namespace LanchoneteApi.Models.Response
+﻿namespace LanchoneteApi.Pedidos.Presentation.Response
 {
     public class PedidoResponse
     {

@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "LanchoneteApi.Controllers.PedidoController",
+    "ContainingType": "LanchoneteApi.Pedidos.Presentation.Controllers.PedidoController",
     "Method": "ConsultaPedidos",
     "RelativePath": "{idPedido}",
     "HttpMethod": "GET",
@@ -15,7 +15,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "LanchoneteApi.Models.Response.PedidoResponse",
+        "Type": "LanchoneteApi.Pedidos.Presentation.Response.PedidoResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -26,22 +26,22 @@
     ]
   },
   {
-    "ContainingType": "LanchoneteApi.Controllers.PedidoController",
+    "ContainingType": "LanchoneteApi.Pedidos.Presentation.Controllers.PedidoController",
     "Method": "AdicionarPedido",
-    "RelativePath": "Pedido",
+    "RelativePath": "api/Pedido",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "pedido",
-        "Type": "LanchoneteApi.Models.Request.PedidoRequest",
+        "Type": "LanchoneteApi.Pedidos.Presentation.Request.PedidoRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "LanchoneteApi.Models.Pedido",
+        "Type": "LanchoneteApi.Pedidos.Domain.Pedido",
         "MediaTypes": [
           "text/plain",
           "application/json",

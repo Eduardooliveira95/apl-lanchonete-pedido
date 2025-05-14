@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
-using LanchoneteApi.Interfaces;
-using LanchoneteApi.Models;
-using LanchoneteApi.Models.Request;
-using LanchoneteApi.Models.Response;
+using LanchoneteApi.Pedidos.Application.Interfaces;
+using LanchoneteApi.Pedidos.Domain;
+using LanchoneteApi.Pedidos.Infrastructure.Messaging;
+using LanchoneteApi.Pedidos.Presentation.Request;
+using LanchoneteApi.Pedidos.Presentation.Response;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace LanchoneteApi.Services
+namespace LanchoneteApi.Pedidos.Application
 {
     public class PedidoService : IPedidoService
     {
@@ -14,16 +15,19 @@ namespace LanchoneteApi.Services
         private string _cacheKey = "PedidoCache";
         private IMapper _mapper;
         private ProcessamentoPedidoService _processamentoPedidoService;
+        private ConsumoPedidoService _consumoPedidoService;
 
         public PedidoService(
-            IMemoryCache cache
-            ,IMapper mapper
-            , ProcessamentoPedidoService processamentoPedidoService
+            IMemoryCache cache,
+            IMapper mapper,
+            ProcessamentoPedidoService processamentoPedidoService,
+            ConsumoPedidoService consumoPedidoService
             )
         {
             _cache = cache;
             _mapper = mapper;
             _processamentoPedidoService = processamentoPedidoService;
+            _consumoPedidoService = consumoPedidoService;
         }
 
         public async Task<Pedido> SalvarPedido(PedidoRequest pedidoRequest) 
@@ -31,9 +35,7 @@ namespace LanchoneteApi.Services
             try
             {
                 Pedido NovoPedido = _mapper.Map<Pedido>(pedidoRequest);
-
                 NovoPedido.StatusPedido = "Pendente";
-
                 Dictionary<int, Pedido> pedidos;
 
                 if (!_cache.TryGetValue(_cacheKey, out pedidos))
@@ -42,12 +44,13 @@ namespace LanchoneteApi.Services
                 }
 
                 NovoPedido.IdPedido = pedidos.Any() ? pedidos.Keys.Max() + 1 : 1;
-
                 pedidos[NovoPedido.IdPedido] = NovoPedido;
 
                 _cache.Set(_cacheKey, pedidos, TimeSpan.FromMinutes(10));
 
                 await _processamentoPedidoService.ProcessarPedido(NovoPedido.IdPedido);
+
+                Task.Run(async () => IniciarDelayConsumo());
 
                 return NovoPedido;
             }
@@ -56,6 +59,15 @@ namespace LanchoneteApi.Services
                 throw new ArgumentException("Erro ao cadastrar! " + ex);
             }
         }
+
+        public async Task IniciarDelayConsumo() 
+        {
+            _ = Task.Run(async () =>
+            {
+                await Task.Delay(TimeSpan.FromSeconds(5));
+                await _consumoPedidoService.ConsumirPedido();
+            });
+        } 
 
         public async Task<PedidoResponse>? ConsultaPedido(int idPedido)
         {

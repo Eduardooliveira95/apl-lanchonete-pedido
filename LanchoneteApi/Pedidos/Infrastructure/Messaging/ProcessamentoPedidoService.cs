@@ -1,8 +1,8 @@
 ﻿using Confluent.Kafka;
-using LanchoneteApi.Interfaces;
+using LanchoneteApi.Pedidos.Application.Interfaces;
 using System.Text.Json;
 
-namespace LanchoneteApi.Services
+namespace LanchoneteApi.Pedidos.Infrastructure.Messaging
 {
     public class ProcessamentoPedidoService : IProcessamentoPedidoService
     {

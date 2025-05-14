@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
-using LanchoneteApi.Models.Request;
-using LanchoneteApi.Models.Response;
+using LanchoneteApi.Pedidos.Domain;
+using LanchoneteApi.Pedidos.Presentation.Request;
+using LanchoneteApi.Pedidos.Presentation.Response;
 
-namespace LanchoneteApi.Models.Mappings
+namespace LanchoneteApi.Pedidos.Application.Mappings
 {
     public class ServiceMapping : Profile
     {

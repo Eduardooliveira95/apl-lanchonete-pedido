@@ -1,9 +1,9 @@
 ﻿using Confluent.Kafka;
-using LanchoneteApi.Interfaces;
-using LanchoneteApi.Models;
+using LanchoneteApi.Pedidos.Application.Interfaces;
+using LanchoneteApi.Pedidos.Domain;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace LanchoneteApi.Services
+namespace LanchoneteApi.Pedidos.Infrastructure.Messaging
 {
     public class ConsumoPedidoService : IConsumoPedidoService
     {
@@ -27,18 +27,18 @@ namespace LanchoneteApi.Services
             var consumidor = new ConsumerBuilder<string, string>(_config).Build();
             consumidor.Subscribe(_topic);
 
-            //while (true)
-            //{
-                var resultado = consumidor.Consume();
+            var resultado = consumidor.Consume();
 
-                var idPedido = int.Parse(resultado.Message.Value);
+            var idPedido = int.Parse(resultado.Message.Value);
 
-                if (_cache.TryGetValue(_cacheKey, out Dictionary<int, Pedido>? pedidos))
+            if (_cache.TryGetValue(_cacheKey, out Dictionary<int, Pedido>? pedidos))
+            {
+                foreach (var item in pedidos.Values)
                 {
-                    pedidos[idPedido].StatusPedido = "processado";
-                    _cache.Set(idPedido, pedidos, TimeSpan.FromMinutes(10));
+                    item.StatusPedido = "processado";
+                    _cache.Set(idPedido, item, TimeSpan.FromMinutes(10));
                 }
-            //}
+            }
         }
     }
 }
