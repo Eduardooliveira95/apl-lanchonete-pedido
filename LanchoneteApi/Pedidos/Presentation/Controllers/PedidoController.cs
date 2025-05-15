@@ -28,14 +28,14 @@ namespace LanchoneteApi.Pedidos.Presentation.Controllers
 
             if (busca is null) return NoContent();
 
-            return busca;
+            return Ok(busca);
         }
 
         [HttpPost]
         public async Task<ActionResult<Pedido>> AdicionarPedido(PedidoRequest pedido)
         {
             var NovoPedido = await _pedidoService.CriarPedido(pedido);
-            return NovoPedido;
+            return Ok(NovoPedido);
         }
     }
 }
