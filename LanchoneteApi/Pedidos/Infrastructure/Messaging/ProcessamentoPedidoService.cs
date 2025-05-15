@@ -11,13 +11,9 @@ namespace LanchoneteApi.Pedidos.Infrastructure.Messaging
 
         public async Task ProcessarPedido(int idPedido)
         {
-            Console.WriteLine($"Produzindo pedido {idPedido}...");
             using var produtor = new ProducerBuilder<string, string>(_producerConfig).Build();
             await produtor.ProduceAsync(_topic, new Message<string, string>
             { Key = idPedido.ToString(), Value = idPedido.ToString() });
-
-            //produtor.Flush(TimeSpan.FromSeconds(10));
-            Console.WriteLine($"Pedido {idPedido} enviado ao Kafka.");
         }
     }
 }

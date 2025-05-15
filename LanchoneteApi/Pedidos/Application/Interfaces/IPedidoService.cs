@@ -6,7 +6,7 @@ namespace LanchoneteApi.Pedidos.Application.Interfaces
 {
     public interface IPedidoService
     {
-        public Task<Pedido> SalvarPedido(PedidoRequest pedido);
+        public Task<Pedido> CriarPedido(PedidoRequest pedido);
 
         public Task<PedidoResponse?> ConsultaPedido(int idPedido);
     }

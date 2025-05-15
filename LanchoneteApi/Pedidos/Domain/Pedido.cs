@@ -1,5 +1,4 @@
-﻿using LanchoneteApi.Pedidos.Presentation.Request;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace LanchoneteApi.Pedidos.Domain
 {

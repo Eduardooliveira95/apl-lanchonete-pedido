@@ -34,7 +34,7 @@ namespace LanchoneteApi.Pedidos.Presentation.Controllers
         [HttpPost]
         public async Task<ActionResult<Pedido>> AdicionarPedido(PedidoRequest pedido)
         {
-            var NovoPedido = await _pedidoService.SalvarPedido(pedido);
+            var NovoPedido = await _pedidoService.CriarPedido(pedido);
             return NovoPedido;
         }
     }

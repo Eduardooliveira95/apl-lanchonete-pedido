@@ -30,7 +30,7 @@ namespace LanchoneteApi.Pedidos.Application
             _consumoPedidoService = consumoPedidoService;
         }
 
-        public async Task<Pedido> SalvarPedido(PedidoRequest pedidoRequest) 
+        public async Task<Pedido> CriarPedido(PedidoRequest pedidoRequest) 
         {
             try
             {
