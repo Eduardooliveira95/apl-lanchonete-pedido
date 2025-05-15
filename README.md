@@ -43,6 +43,6 @@ dotnet run
 ```
 ### 5️⃣ Acesse a documentação Swagger
 ```sh
-http://localhost:5000/swagger
+http://localhost:5086/swagger
 ```
 ### Agradeço!
