@@ -51,4 +51,3 @@ dotnet run
 ```sh
 http://localhost:5086/swagger
 ```
-### Agradeço!
