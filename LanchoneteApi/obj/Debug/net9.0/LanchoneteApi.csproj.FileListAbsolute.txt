@@ -103,3 +103,4 @@ C:\Projetos\BTG\projeto\lanchonete\apl-lanchonete-pedido\LanchoneteApi\obj\Debug
 C:\Projetos\BTG\projeto\lanchonete\apl-lanchonete-pedido\LanchoneteApi\obj\Debug\net9.0\LanchoneteApi.genruntimeconfig.cache
 C:\Projetos\BTG\projeto\lanchonete\apl-lanchonete-pedido\LanchoneteApi\obj\Debug\net9.0\ref\LanchoneteApi.dll
 C:\Projetos\BTG\projeto\lanchonete\apl-lanchonete-pedido\LanchoneteApi\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Projetos\BTG\projeto\lanchonete\apl-lanchonete-pedido\LanchoneteApi\bin\Debug\net9.0\Swashbuckle.AspNetCore.Annotations.dll

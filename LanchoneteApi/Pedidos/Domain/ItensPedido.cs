@@ -4,5 +4,6 @@
     {
         public string Categoria { set; get; }
         public string Descricao { set; get; }
+        public double Valor { set; get; }
     }
 }

@@ -24,7 +24,10 @@ builder.Services.AddAutoMapper(typeof(ServiceMapping));
 
 //Swagger 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.EnableAnnotations();
+});
 
 var app = builder.Build();
 

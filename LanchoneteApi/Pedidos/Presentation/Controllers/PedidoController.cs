@@ -5,6 +5,7 @@ using LanchoneteApi.Pedidos.Presentation.Request;
 using LanchoneteApi.Pedidos.Presentation.Response;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace LanchoneteApi.Pedidos.Presentation.Controllers
 {
@@ -22,6 +23,9 @@ namespace LanchoneteApi.Pedidos.Presentation.Controllers
         }
 
         [HttpGet("/{idPedido}")]
+        [SwaggerOperation(Summary = "Consulta um pedido pelo ID", Description = "Retorna idPedido e StatusPedido baseado no ID informado.")]
+        [SwaggerResponse(200, "Item encontrado com sucesso")]
+        [SwaggerResponse(204, "Item não encontrado")]
         public async Task<ActionResult<PedidoResponse>> ConsultaPedidos(int idPedido)
         {
             var busca = await _pedidoService.ConsultaPedido(idPedido);
@@ -32,6 +36,8 @@ namespace LanchoneteApi.Pedidos.Presentation.Controllers
         }
 
         [HttpPost]
+        [SwaggerOperation(Summary = "Criação do pedido", Description = "Criação do novo pedido que será processado posteriormente.")]
+        [SwaggerResponse(201, "Pedido Criado com sucesso!")]
         public async Task<ActionResult<Pedido>> AdicionarPedido(PedidoRequest pedido)
         {
             var NovoPedido = await _pedidoService.CriarPedido(pedido);
