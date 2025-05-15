@@ -69,7 +69,7 @@ namespace LanchoneteApi.Pedidos.Application
             });
         } 
 
-        public async Task<PedidoResponse>? ConsultaPedido(int idPedido)
+        public async Task<PedidoResponse?> ConsultaPedido(int idPedido)
         {
             if (_cache.TryGetValue(_cacheKey, out Dictionary<int, Pedido>? pedidos)) 
             {
