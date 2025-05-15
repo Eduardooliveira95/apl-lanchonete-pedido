@@ -15,6 +15,12 @@ Uma API desenvolvida para gerenciar pedidos e operações de uma lanchonete, uti
   - **docker-compose** - Orquestração de containers
   - **Imagem Zookeeper** - [Docker Hub](https://hub.docker.com/_/zookeeper)
 
+## 💾 Banco de Dados
+O banco de dados utilizado neste projeto é o MemoryCache, garantindo armazenamento temporário eficiente e rápido acesso às informações em memória.
+
+## 🐳 Uso do Docker
+O Docker foi utilizado exclusivamente para viabilizar o funcionamento do Kafka, garantindo um ambiente de mensageria escalável e confiável sem necessidade de instalações complexas.
+
 ## 🏗 Arquitetura
 
 - **Clean Architecture** - Estrutura modular e escalável
