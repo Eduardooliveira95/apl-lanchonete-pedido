@@ -26,7 +26,7 @@ namespace LanchoneteApi.Pedidos.Presentation.Controllers
         {
             var busca = await _pedidoService.ConsultaPedido(idPedido);
 
-            if (busca is null) return NoContent();
+            if (busca is null) {return NoContent(); }
 
             return Ok(busca);
         }
