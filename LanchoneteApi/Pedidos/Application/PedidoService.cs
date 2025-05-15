@@ -46,7 +46,7 @@ namespace LanchoneteApi.Pedidos.Application
                 NovoPedido.IdPedido = pedidos.Any() ? pedidos.Keys.Max() + 1 : 1;
                 pedidos[NovoPedido.IdPedido] = NovoPedido;
 
-                _cache.Set(_cacheKey, pedidos, TimeSpan.FromMinutes(10));
+                _cache.Set(_cacheKey, pedidos, TimeSpan.FromMinutes(20));
 
                 await _processamentoPedidoService.ProcessarPedido(NovoPedido.IdPedido);
 
@@ -64,7 +64,7 @@ namespace LanchoneteApi.Pedidos.Application
         {
             _ = Task.Run(async () =>
             {
-                await Task.Delay(TimeSpan.FromSeconds(5));
+                await Task.Delay(TimeSpan.FromSeconds(30));
                 await _consumoPedidoService.ConsumirPedido();
             });
         } 

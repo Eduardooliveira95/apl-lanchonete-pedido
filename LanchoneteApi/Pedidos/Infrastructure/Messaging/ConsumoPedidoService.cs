@@ -36,7 +36,7 @@ namespace LanchoneteApi.Pedidos.Infrastructure.Messaging
                 foreach (var item in pedidos.Values)
                 {
                     item.StatusPedido = "processado";
-                    _cache.Set(idPedido, item, TimeSpan.FromMinutes(10));
+                    _cache.Set(idPedido, item, TimeSpan.FromMinutes(20));
                 }
             }
         }
