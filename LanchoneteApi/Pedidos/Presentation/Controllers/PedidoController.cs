@@ -1,9 +1,7 @@
 ﻿using LanchoneteApi.Pedidos.Application;
 using LanchoneteApi.Pedidos.Domain;
-using LanchoneteApi.Pedidos.Infrastructure.Messaging;
 using LanchoneteApi.Pedidos.Presentation.Request;
 using LanchoneteApi.Pedidos.Presentation.Response;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -14,12 +12,10 @@ namespace LanchoneteApi.Pedidos.Presentation.Controllers
     public class PedidoController : ControllerBase
     {
         private PedidoService _pedidoService;
-        private ConsumoPedidoService _consumoPedidoService;
 
-        public PedidoController(PedidoService pedidoService, ConsumoPedidoService consumoPedidoService)
+        public PedidoController(PedidoService pedidoService)
         {
             _pedidoService = pedidoService;
-            _consumoPedidoService = consumoPedidoService;
         }
 
         [HttpGet("/{idPedido}")]

@@ -19,7 +19,6 @@ builder.Services.AddScoped<ConsumoPedidoService, ConsumoPedidoService>();
 builder.Services.AddMemoryCache();
 
 // AutoMapper
-//builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddAutoMapper(typeof(ServiceMapping));
 
 //Swagger 
